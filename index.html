@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Ryhn</title>
+        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+        <style>
+            * {
+                font-family: Vazirmatn;
+            }
+            input {
+                direction: rtl;
+            }
+            #container {
+                display: flex;
+                flex-direction: column;
+                width: 300;
+                position: absolute;
+                top: 65%;
+                left:40%;
+                margin: -50px 0 0 -50px;
+
+                padding: 20px;
+
+                /* From https://css.glass */
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 16px;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(8.4px);
+                -webkit-backdrop-filter: blur(8.4px);
+                border: 1px solid rgba(255, 255, 255, 0.77);
+            }
+            body {
+                background-image: url("moon.jpg");
+                background-repeat: no-repeat;
+                background-position: center top;
+                background-size: contain;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <input type="number" name="n1" placeholder="عددی وارد کنید"/>
+            <input type="number" style="margin-top: 10px;" name="n2" placeholder="عددی وارد کنید"/>
+
+            <span style="direction: rtl;color: white; margin-right: 25px;">
+
+                <label>حاصل</label>
+                <label>:</label>
+                <span id="result"></span>
+            </span>
+            <button id="sum">محاسبه کن</button>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const sum = document.querySelector("#sum");
+        sum.addEventListener("click", e => {
+            const n1 = document.querySelector('input[name="n1"]').value;
+            const n2 = document.querySelector('input[name="n2"]').value;
+            if(!n1) {
+                Swal.fire({
+                    confirmButtonText: "باشه",
+                    icon: "error",
+                    title: "وای...",
+                    text: "عدد اول را وارد کنید"
+                });
+                return;
+            }
+            if(!n2) {
+                Swal.fire({
+                    confirmButtonText: "باشه",
+                    icon: "error",
+                    title: "وای...",
+                    text: "عدد دوم را وارد کنید"
+                });
+                return;
+            }
+            let result = Number(n1) + Number(n2);
+            document.querySelector("#result").innerHTML = result;
+        });
+    </script>
+</html>
